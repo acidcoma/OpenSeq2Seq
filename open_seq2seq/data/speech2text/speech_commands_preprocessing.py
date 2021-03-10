@@ -57,7 +57,7 @@ for idx, label in enumerate(classes):
 			os.mkdir(silence_path)
 
 		silence_stride = 2000
-		sampling_rate = 16000
+		sampling_rate = 8000
 		folder = os.path.join(root_dir, "_background_noise_")
 
 		for file in os.listdir(folder):

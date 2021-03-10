@@ -162,7 +162,7 @@ class Speech2TextDataLayer(DataLayer):
     self.params['max_duration'] = self.params.get('max_duration', -1.0)
     self.params['window_size'] = self.params.get('window_size', 20e-3)
     self.params['window_stride'] = self.params.get('window_stride', 10e-3)
-    self.params['sample_freq'] = self.params.get('sample_freq', 16000)
+    self.params['sample_freq'] = self.params.get('sample_freq', 8000)
 
     mel_basis = None
     if (self.params.get("precompute_mel_basis", False) and
@@ -441,7 +441,7 @@ class Speech2TextDataLayer(DataLayer):
       sample id.
     """
     source, audio_duration = get_speech_features(
-        wav, 16000., self.params
+        wav, 8000., self.params
     )
 
     return source.astype(self.params['dtype'].as_numpy_dtype()), \

@@ -8,21 +8,20 @@ from open_seq2seq.data import Speech2TextDataLayer
 from open_seq2seq.losses import CTCLoss
 from open_seq2seq.optimizers.lr_policies import poly_decay
 
-
 base_model = Speech2Text
 
 base_params = {
     "use_horovod": False,
-    "num_epochs": 500,
+    "num_epochs": 100,
 
-    "num_gpus": 1,
+    "num_gpus": 4,
     "batch_size_per_gpu": 10,
     "save_summaries_steps": 10,
     "print_loss_steps": 10,
     "print_samples_steps": 20,
     "eval_steps": 50,
     "save_checkpoint_steps": 50,
-    "logdir": "tmp_log_folder",
+    "logdir": "tmp_log_folder",  #
 
     "optimizer": "Momentum",
     "optimizer_params": {
@@ -36,7 +35,10 @@ base_params = {
     "larc_params": {
         "larc_eta": 0.001,
     },
-    "dtype": tf.float32,
+
+    "dtype": "mixed",
+    "loss_scaling": "Backoff",
+
     "summaries": ['learning_rate', 'variables', 'gradients', 'larc_summaries',
                   'variable_norm', 'gradient_norm', 'global_gradient_norm'],
 
@@ -47,13 +49,13 @@ base_params = {
                 "type": "conv1d", "repeat": 3,
                 "kernel_size": [7], "stride": [1],
                 "num_channels": 200, "padding": "SAME",
-                "dilation":[1]
+                "dilation": [1]
             },
             {
                 "type": "conv1d", "repeat": 1,
                 "kernel_size": [1], "stride": [1],
                 "num_channels": 400, "padding": "SAME",
-                "dilation":[1]
+                "dilation": [1]
             },
         ],
 
@@ -81,9 +83,9 @@ train_params = {
     "data_layer_params": {
         "num_audio_features": 40,
         "input_type": "logfbank",
-        "vocab_file": "open_seq2seq/test_utils/toy_speech_data/vocab.txt",
+        "vocab_file": "/mnt/storage/nosenko/voxforge/voxforge_csv_data/vocab_voxforge.txt",
         "dataset_files": [
-            "open_seq2seq/test_utils/toy_speech_data/toy_data.csv",
+            "/mnt/storage/nosenko/voxforge/voxforge_csv_data/train_voxforge.csv",
         ],
         "shuffle": True,
     },
@@ -94,9 +96,23 @@ eval_params = {
     "data_layer_params": {
         "num_audio_features": 40,
         "input_type": "logfbank",
-        "vocab_file": "open_seq2seq/test_utils/toy_speech_data/vocab.txt",
+        "vocab_file": "/mnt/storage/nosenko/voxforge/voxforge_csv_data/vocab_voxforge.txt",
         "dataset_files": [
-            "open_seq2seq/test_utils/toy_speech_data/toy_data.csv",
+            "/mnt/storage/nosenko/voxforge/voxforge_csv_data/validation_voxforge.csv",
+        ],
+        "shuffle": False,
+    },
+}
+
+infer_params = {
+    "data_layer": Speech2TextDataLayer,
+    "data_layer_params": {
+        "num_audio_features": 40,
+        "input_type": "logfbank",
+        "vocab_file": "/mnt/storage/nosenko/voxforge/voxforge_csv_data/vocab_voxforge.csv",
+        "dataset_files": [
+
+            "/mnt/storage/nosenko/voxforge/voxforge_csv_data/test_voxforge.csv",
         ],
         "shuffle": False,
     },
