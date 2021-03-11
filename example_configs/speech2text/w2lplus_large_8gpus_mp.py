@@ -140,11 +140,9 @@ train_params = {
     "data_layer_params": {
         "num_audio_features": 64,
         "input_type": "logfbank",
-        "vocab_file": "open_seq2seq/test_utils/toy_speech_data/vocab.txt",
+        "vocab_file": "/media/storage2/nosenko/voxforge/voxforge_csv_data/vocab_voxforge.txt",
         "dataset_files": [
-            "data/librispeech/librivox-train-clean-100.csv",
-            "data/librispeech/librivox-train-clean-360.csv",
-            "data/librispeech/librivox-train-other-500.csv",
+            "/media/storage2/nosenko/voxforge/voxforge_csv_data/train_voxforge.csv",
         ],
         "max_duration": 16.7,
         "shuffle": True,
@@ -156,9 +154,9 @@ eval_params = {
     "data_layer_params": {
         "num_audio_features": 64,
         "input_type": "logfbank",
-        "vocab_file": "open_seq2seq/test_utils/toy_speech_data/vocab.txt",
+        "vocab_file": "/media/storage2/nosenko/voxforge/voxforge_csv_data/vocab_voxforge.txt",
         "dataset_files": [
-            "data/librispeech/librivox-dev-clean.csv",
+            "/media/storage2/nosenko/voxforge/voxforge_csv_data/validation_voxforge.csv",
         ],
         "shuffle": False,
     },
@@ -169,50 +167,10 @@ infer_params = {
     "data_layer_params": {
         "num_audio_features": 64,
         "input_type": "logfbank",
-        "vocab_file": "open_seq2seq/test_utils/toy_speech_data/vocab.txt",
-        "dataset_files": [
-            "data/librispeech/librivox-test-clean.csv",
-        ],
-        "shuffle": False,
-    },
-}
-
-train_params = {
-    "data_layer": Speech2TextDataLayer,
-    "data_layer_params": {
-        "num_audio_features": 64,
-        "input_type": "logfbank",
-        "vocab_file": "/mnt/storage/nosenko/voxforge/voxforge_csv_data/vocab_voxforge.txt",
-        "dataset_files": [
-            "/mnt/storage/nosenko/voxforge/voxforge_csv_data/train_voxforge.csv",
-        ],
-        "max_duration": 16.7,
-        "shuffle": True,
-    },
-}
-
-eval_params = {
-    "data_layer": Speech2TextDataLayer,
-    "data_layer_params": {
-        "num_audio_features": 64,
-        "input_type": "logfbank",
-        "vocab_file": "/mnt/storage/nosenko/voxforge/voxforge_csv_data/vocab_voxforge.txt",
-        "dataset_files": [
-            "/mnt/storage/nosenko/voxforge/voxforge_csv_data/validation_voxforge.csv",
-        ],
-        "shuffle": False,
-    },
-}
-
-infer_params = {
-    "data_layer": Speech2TextDataLayer,
-    "data_layer_params": {
-        "num_audio_features": 64,
-        "input_type": "logfbank",
-        "vocab_file": "/mnt/storage/nosenko/voxforge/voxforge_csv_data/vocab_voxforge.csv",
+        "vocab_file": "/media/storage2/nosenko/voxforge/voxforge_csv_data/vocab_voxforge.csv",
         "dataset_files": [
 
-            "/mnt/storage/nosenko/voxforge/voxforge_csv_data/test_voxforge.csv",
+            "/media/storage2/nosenko/voxforge/voxforge_csv_data/test_voxforge.csv",
         ],
         "shuffle": False,
     },

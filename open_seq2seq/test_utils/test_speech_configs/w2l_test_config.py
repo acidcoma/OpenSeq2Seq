@@ -12,7 +12,7 @@ base_model = Speech2Text
 
 base_params = {
     "use_horovod": False,
-    "num_epochs": 100,
+    "num_epochs": 200,
 
     "num_gpus": 4,
     "batch_size_per_gpu": 10,
@@ -83,9 +83,9 @@ train_params = {
     "data_layer_params": {
         "num_audio_features": 40,
         "input_type": "logfbank",
-        "vocab_file": "/mnt/storage/nosenko/voxforge/voxforge_csv_data/vocab_voxforge.txt",
+        "vocab_file": "/media/storage2/nosenko/voxforge/voxforge_csv_data/vocab_voxforge.txt",
         "dataset_files": [
-            "/mnt/storage/nosenko/voxforge/voxforge_csv_data/train_voxforge.csv",
+            "/media/storage2/nosenko/voxforge/voxforge_csv_data/train_voxforge.csv",
         ],
         "shuffle": True,
     },
@@ -96,9 +96,9 @@ eval_params = {
     "data_layer_params": {
         "num_audio_features": 40,
         "input_type": "logfbank",
-        "vocab_file": "/mnt/storage/nosenko/voxforge/voxforge_csv_data/vocab_voxforge.txt",
+        "vocab_file": "/media/storage2/nosenko/voxforge/voxforge_csv_data/vocab_voxforge.txt",
         "dataset_files": [
-            "/mnt/storage/nosenko/voxforge/voxforge_csv_data/validation_voxforge.csv",
+            "/media/storage2/nosenko/voxforge/voxforge_csv_data/validation_voxforge.csv",
         ],
         "shuffle": False,
     },
@@ -109,10 +109,10 @@ infer_params = {
     "data_layer_params": {
         "num_audio_features": 40,
         "input_type": "logfbank",
-        "vocab_file": "/mnt/storage/nosenko/voxforge/voxforge_csv_data/vocab_voxforge.csv",
+        "vocab_file": "/media/storage2/nosenko/voxforge/voxforge_csv_data/vocab_voxforge.csv",
         "dataset_files": [
 
-            "/mnt/storage/nosenko/voxforge/voxforge_csv_data/test_voxforge.csv",
+            "/media/storage2/nosenko/voxforge/voxforge_csv_data/test_voxforge.csv",
         ],
         "shuffle": False,
     },
